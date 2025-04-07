@@ -46,6 +46,7 @@
   },
   "mounts": [
     "type=volume,target=/var/lib/docker",
-    "type=volume,target=/mnt/supervisor"
+    "type=volume,target=/mnt/supervisor",
+    "type=bind,source=${localWorkspaceFolder}/hass_data,target=/data"
   ]
 }
