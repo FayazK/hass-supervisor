@@ -7,7 +7,7 @@
   "remoteEnv": {
     "PATH": "${containerEnv:VIRTUAL_ENV}/bin:${containerEnv:PATH}"
   },
-  "appPort": ["9123:8123", "7357:4357"],
+  "appPort": ["9123:8123", "7357:4357", "9190:9190"],
   "postCreateCommand": "bash devcontainer_setup",
   "postStartCommand": "bash devcontainer_bootstrap",
   "runArgs": ["-e", "GIT_EDITOR=code --wait", "--privileged"],
@@ -46,6 +46,10 @@
   },
   "mounts": [
     "type=volume,target=/var/lib/docker",
-    "type=volume,target=/mnt/supervisor"
+    "type=volume,target=/mnt/supervisor",
+    "source=ha-supervisor-data,target=/data,type=volume",
+    "source=ha-supervisor-config,target=/config,type=volume",
+    "source=ha-supervisor-addons,target=/addons,type=volume",
+    "source=ha-supervisor-ssl,target=/ssl,type=volume"
   ]
 }
